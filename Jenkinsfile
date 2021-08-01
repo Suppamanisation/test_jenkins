@@ -26,6 +26,12 @@ pipeline {
                   git branch: "master", url: "https://github.com/Suppamanisation/test_jenkins.git"
                   }
             }
+        
+        stage('install Terraform') {
+            steps {
+                sh  
+            }
+        }
 
         stage('Plan') {
             steps {
@@ -40,7 +46,6 @@ pipeline {
                       -backend-config "key=terraform-${region}/${service}.tfstate" \
                       -backend-config "region=${region}" \
                       -backend-config "dynamodb_table=terraform" \
-                      -lock=true
                 '''
                 sh """#!/bin/bash
                   terraform workspace show | grep ${environment} ; if [ "\$?" == 0 ];then echo "workspace already exists ";else terraform workspace new ${environment}; fi;
