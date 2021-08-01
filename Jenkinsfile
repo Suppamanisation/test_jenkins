@@ -26,12 +26,6 @@ pipeline {
                   git branch: "master", url: "https://github.com/Suppamanisation/test_jenkins.git"
                   }
             }
-        
-        stage('install Terraform') {
-            steps {
-                sh  
-            }
-        }
 
         stage('Plan') {
             steps {
